@@ -9,5 +9,3 @@ logging:
     level:
         org.springframework.web: TRACE
         fr.home.mikedev: TRACE
-        org.hibernate.SQL: DEBUG
-        org.hibernate.orm.jdbc.bind: trace

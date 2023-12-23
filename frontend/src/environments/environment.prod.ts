@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: "https://www.mikedev.fr/crypto"
+  apiURL: "https://www.mikedev.fr/crypto-tools"
 };
