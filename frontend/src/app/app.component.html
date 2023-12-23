@@ -23,16 +23,36 @@
   </nav>
 </header>
 <main>
-  <div class="content">
-    <div class="btn-toolbar" role="toolbar" aria-label="Add toolbar">
-      <div class="btn-group" role="group" aria-label="Add">
-        <button type="button" class="btn btn-success btn-xs" (click)="onAddRecord()">
-            <mat-icon style="vertical-align: middle;" fontIcon="add"></mat-icon>
+  <div class="container-xxl content"  style="padding: .75rem 0">
+    <div class="card" style="width: 25rem;">
+      <div class="card-header fw-bold d-flex align-items-center justify-content-between">
+        Encrypt Password            
+        <button type="button" class="btn btn-warning btn-xs" (click)="onClear()">
+          <mat-icon style="vertical-align: middle;" fontIcon="delete_sweep"></mat-icon>
         </button>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col"><label>Master Key :</label></div>
+          <div class="col"><input type="text" [(ngModel)]="masterKey"/></div>
+        </div>
+        <div class="row">
+          <div class="col"><label>Password :</label></div>
+          <div class="col"><input type="text"  [(ngModel)]="password"/></div>
+        </div>
+        <div class="d-flex align-items-center justify-content-between" style="padding: 5px;">
+          <button type="button" class="btn btn-success btn-xs" (click)="onEncrypt()">
+              <mat-icon style="vertical-align: middle;" fontIcon="lock"></mat-icon>
+          </button>
+          <input type="text" [(ngModel)]="result" readonly (click)="onCopy($event)"/>
+          <button type="button" class="btn btn-danger btn-xs" (click)="onDecrypt()">
+            <mat-icon style="vertical-align: middle;" fontIcon="lock_open"></mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </main>
 <footer>
-  
+
 </footer>
