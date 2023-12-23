@@ -1,0 +1,36 @@
+server:
+    port: 8083
+    
+tomcat:
+  ajp:
+    port: 9093
+
+masterkey:
+    path: /opt/springservices/data/file.txt
+    
+spring:
+    security:
+        user:
+            name: music-discover
+            password: ENC(DoQL5v2FeWFjbKXJ5recd96QsuArVfIdb0cfQkNaklNDifsRfKiju4DxSxsHRjvICHiN+OB/VpcPvdE6HeNayQ==)
+            roles: webservices
+    datasource:
+        url: jdbc:hsqldb:file:/opt/datas/music-discover/music-discover
+        username: music-discover
+        password: ENC(oE7gHtSP1DlMa1oWOe+P9PK0RRzEVfB/RwyU92M7CxdWBlsIdPTdkRGF4O+t7KEh2o7aIimcN4TOOYyyruQXfw==)
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                format_sql: true
+
+#    data:
+#        rest:
+#            basePath: /jpa
+
+logging:
+    level:
+        org.springframework.web: TRACE
+        fr.home.mikedev: TRACE
+        org.hibernate.type.descriptor.sql: TRACE

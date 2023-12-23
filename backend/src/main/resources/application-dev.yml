@@ -1,0 +1,13 @@
+server:
+    port: 8083
+    
+tomcat:
+  ajp:
+    port: 9093
+
+logging:
+    level:
+        org.springframework.web: TRACE
+        fr.home.mikedev: TRACE
+        org.hibernate.SQL: DEBUG
+        org.hibernate.orm.jdbc.bind: trace
