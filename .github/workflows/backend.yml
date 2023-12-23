@@ -1,0 +1,51 @@
+name: Backend Build
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: './backend'
+        
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'corretto'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: ssh-scp-deploy
+      # You may pin to the exact commit or the version.
+      # uses: marcodallasanta/ssh-scp-deploy@acf9c1fefcda34c0b8b0cb0c0c1b521bf130d8b6
+      uses: marcodallasanta/ssh-scp-deploy@v1.2.0
+      with:
+        # Local file path
+        local: ./backend/target/*.jar
+        # Remote file path
+        remote: ~/deploy/
+        # Remote server address
+        host: ${{secrets.OVH_SERVER}}
+        # Remote server port (default 22)
+        port: ${{secrets.OVH_PORT}} # optional, default is 22
+        # Remote server user
+        user: ${{secrets.OVH_USER}}
+        # User password
+        password: ${{secrets.OVH_PASSWORD}} # optional
+        # Remote server private key
+        #key: # optional
+        # Command to run via ssh before scp upload
+        pre_upload: ~/deploy/clean-backend.sh ${{vars.PROJECT_NAME}} # optional
+        # Command to run via ssh after scp upload
+        post_upload: ~/deploy/deploy-backend.sh ${{vars.PROJECT_NAME}} # optional
+        # A set of ssh_option separated by -o
+        #ssh_options: # optional, default is -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+        # Flags to use during scp
+        #scp_options: # optional
