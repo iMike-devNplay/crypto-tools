@@ -54,7 +54,6 @@ export class AppComponent
 
   onCopy(event: any)
   {
-    console.log("click");
     navigator.clipboard.writeText(this.result);
     this.alertService.openSnackBar("Copied into clipboard !");
   }
