@@ -26,8 +26,6 @@ public class CryptoController
     {
         try 
         {
-        	logger.info(version);
-        	logger.info(cryptoDto.getMasterKey() + " ; " + cryptoDto.getPassword());
         	ICryptoService cryptoService = getCryptoService(version);
         	if (cryptoService == null) return new ResponseEntity<>(null, HttpStatus.NOT_IMPLEMENTED);
             return new ResponseEntity<>(CryptoDto.builder().password(cryptoService.encrypt(cryptoDto.getMasterKey(), cryptoDto.getPassword())).build(), HttpStatus.OK);
@@ -44,8 +42,6 @@ public class CryptoController
     {
         try 
         {
-        	logger.info(version);
-        	logger.info(cryptoDto.getMasterKey() + " ; " + cryptoDto.getPassword());
         	ICryptoService cryptoService = getCryptoService(version);
         	if (cryptoService == null) return new ResponseEntity<>(null, HttpStatus.NOT_IMPLEMENTED);
             return new ResponseEntity<>(CryptoDto.builder().password(cryptoService.decrypt(cryptoDto.getMasterKey(), cryptoDto.getPassword())).build(), HttpStatus.OK);
