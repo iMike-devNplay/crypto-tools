@@ -18,17 +18,17 @@ export class CryptoToolsService {
     return httpHeaders;
   }
 
-  encrypt(cryptoDto: CryptoDto): Observable<CryptoDto>
+  encrypt(version: string, cryptoDto: CryptoDto): Observable<CryptoDto>
   {
     //let queryParams = new HttpParams().append("username", username);
     let options = { headers: this.initHeader()};
-    return this.http.post<CryptoDto>(encodeURI(`${this.baseUrl}/api/encrypt`), cryptoDto, options);
+    return this.http.post<CryptoDto>(encodeURI(`${this.baseUrl}/api/encrypt/${version}`), cryptoDto, options);
   }
 
-  decrypt(cryptoDto: CryptoDto): Observable<CryptoDto>
+  decrypt(version: string, cryptoDto: CryptoDto): Observable<CryptoDto>
   {
     //let queryParams = new HttpParams().append("username", username);
     let options = { headers: this.initHeader()};
-    return this.http.post<CryptoDto>(encodeURI(`${this.baseUrl}/api/decrypt`), cryptoDto, options);
+    return this.http.post<CryptoDto>(encodeURI(`${this.baseUrl}/api/decrypt/${version}`), cryptoDto, options);
   }
 }

@@ -10,7 +10,10 @@ import { AlertService } from './services/alert.service';
 })
 export class AppComponent 
 {
-  title = 'Crypto Tools';
+  title: string = 'Crypto Tools';
+
+  currentMode: string = "PERSO";
+  isModePerso: boolean = true;
 
   masterKey: string = "";
   password: string = "";
@@ -24,22 +27,24 @@ export class AppComponent
 
   onEncrypt()
   {
-    this.cryptoToolsService.encrypt(new CryptoDto(this.masterKey, this.password)).subscribe(
-      data => 
-      {
-        this.result = data.password;
-      }
-    );
+    if (this.masterKey && this.password)
+      this.cryptoToolsService.encrypt(this.currentMode, new CryptoDto(this.masterKey, this.password)).subscribe(
+        data => 
+        {
+          this.result = data.password;
+        }
+      );
   }
 
   onDecrypt()
   {
-    this.cryptoToolsService.decrypt(new CryptoDto(this.masterKey, this.password)).subscribe(
-      data => 
-      {
-        this.result = data.password;
-      }
-    );
+    if (this.masterKey && this.password)
+      this.cryptoToolsService.decrypt(this.currentMode, new CryptoDto(this.masterKey, this.password)).subscribe(
+        data => 
+        {
+          this.result = data.password;
+        }
+      );
   }
 
   onClear()
@@ -51,10 +56,15 @@ export class AppComponent
     this.alertService.openSnackBar("Clipboard cleared !");
   }
 
-
   onCopy(event: any)
   {
     navigator.clipboard.writeText(this.result);
     this.alertService.openSnackBar("Copied into clipboard !");
+  }
+
+  onModeChanged(): void
+  {
+    if (this.isModePerso) this.currentMode = "PERSO";
+    else this.currentMode = "PRO";
   }
 }

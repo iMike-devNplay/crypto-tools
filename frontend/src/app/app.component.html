@@ -26,7 +26,10 @@
   <div class="container-xxl content"  style="padding: .75rem 0">
     <div class="card" style="width: 25rem;">
       <div class="card-header fw-bold d-flex align-items-center justify-content-between">
-        Encrypt Password            
+        Encrypt Password    
+        <mat-slide-toggle hideIcon="true" [(ngModel)]="isModePerso" (change)="onModeChanged()" labelPosition="after">
+          {{ currentMode }}
+        </mat-slide-toggle>
         <button type="button" class="btn btn-warning btn-xs" (click)="onClear()">
           <mat-icon style="vertical-align: middle;" fontIcon="delete_sweep"></mat-icon>
         </button>

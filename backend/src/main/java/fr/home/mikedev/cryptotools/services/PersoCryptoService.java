@@ -2,10 +2,8 @@ package fr.home.mikedev.cryptotools.services;
 
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
-import org.springframework.stereotype.Service;
 
-@Service
-public class CryptoService 
+public class PersoCryptoService implements ICryptoService 
 {
     
     public String encrypt(String masterKey, String password)
