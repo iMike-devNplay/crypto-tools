@@ -5,6 +5,13 @@ tomcat:
   ajp:
     port: 9094
 
+spring:
+    security:
+        user:
+            name: cryptotools
+            password: crypt0t00l$DEV
+            roles: webservices
+            
 logging:
     level:
         org.springframework.web: TRACE

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {Buffer} from 'buffer';
 import { environment } from 'src/environments/environment';
 import { CryptoDto } from '../models/crypto-dto';
 
@@ -14,6 +15,9 @@ export class CryptoToolsService {
   initHeader(): HttpHeaders
   {
     let httpHeaders = new HttpHeaders();
+    //let buff: Buffer = Buffer.from("cryptotools:crypt0t00l$DEV", 'base64');
+    let pass:string = btoa("cryptotools:crypt0t00l$DEV");
+    httpHeaders = httpHeaders.append("Authentication", `Basic ${pass}`)
           //.set('Content-Type', 'application/json'); //application/json
     return httpHeaders;
   }
