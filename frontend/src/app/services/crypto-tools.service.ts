@@ -18,8 +18,15 @@ export class CryptoToolsService {
     //let buff: Buffer = Buffer.from("cryptotools:crypt0t00l$DEV", 'base64');
     let pass:string = btoa("cryptotools:crypt0t00l$DEV");
     httpHeaders = httpHeaders.append("Authentication", `Basic ${pass}`)
-          //.set('Content-Type', 'application/json'); //application/json
+                            .append('Content-Type', 'text/html'); //application/json
     return httpHeaders;
+  }
+
+  index(): Observable<string>
+  {
+    //let queryParams = new HttpParams().append("username", username);
+    let options = { headers: this.initHeader()};
+    return this.http.get<string>(encodeURI(`${this.baseUrl}/api/index`), options);
   }
 
   encrypt(version: string, cryptoDto: CryptoDto): Observable<CryptoDto>

@@ -36,6 +36,11 @@ export class AppComponent
       );
   }
 
+  onIndex()
+  {
+    this.cryptoToolsService.index().subscribe( data => console.log(data));
+  }
+
   onDecrypt()
   {
     if (this.masterKey && this.password)

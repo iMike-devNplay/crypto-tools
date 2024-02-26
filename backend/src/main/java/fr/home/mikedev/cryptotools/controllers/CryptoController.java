@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +16,17 @@ import fr.home.mikedev.cryptotools.services.ICryptoService;
 import fr.home.mikedev.cryptotools.services.PersoCryptoService;
 import fr.home.mikedev.cryptotools.services.ProCryptoService;
 
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 public class CryptoController 
 {
     public static Logger logger = LoggerFactory.getLogger(CryptoController.class);
     
+    @GetMapping("/api/index")
+    public ResponseEntity<String> index()
+    {
+    	return new ResponseEntity<>("<html><head><title>Coucou</title></head><body>Hello World !</body></html>", HttpStatus.OK);
+    }
     @PostMapping("/api/encrypt/{version}")
     public ResponseEntity<CryptoDto> encryptPro(@PathVariable String version, @RequestBody CryptoDto cryptoDto)
     {
