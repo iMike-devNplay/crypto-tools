@@ -7,7 +7,7 @@ tomcat:
 
 masterkey:
     path: /opt/springservices/data/file.txt
-   
+    
 logging:
     level:
         org.springframework.web: TRACE

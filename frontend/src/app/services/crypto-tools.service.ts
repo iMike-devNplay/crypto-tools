@@ -16,9 +16,9 @@ export class CryptoToolsService {
   {
     let httpHeaders = new HttpHeaders();
     //let buff: Buffer = Buffer.from("cryptotools:crypt0t00l$DEV", 'base64');
-    let pass:string = btoa("cryptotools:crypt0t00l$DEV");
-    httpHeaders = httpHeaders.append("Authentication", `Basic ${pass}`)
-                            .append('Content-Type', 'text/html'); //application/json
+    //let pass:string = btoa("cryptotools:crypt0t00l$DEV");
+    //httpHeaders = httpHeaders.append("Authentication", `Basic ${pass}`)
+    //                        .append('Content-Type', 'text/html'); //application/json
     return httpHeaders;
   }
 

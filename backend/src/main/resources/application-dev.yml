@@ -6,14 +6,7 @@ tomcat:
     port: 9094
 
 masterkey:
-    path: C:\dev\tools\masterkey\key.txt
-    
-spring:
-    security:
-        user:
-            name: cryptotools
-            password: ENC(uUmIQPwoBGBO8Z5lsstctw9J+NZ3SL7KdHLjwv3JXnJAGWZzA9e2q9q9EoaH1OvY)
-            roles: webservices
+    path: C:\Users\micha\Documents\dev\masterkey\devkey.txt
             
 logging:
     level:
