@@ -4,6 +4,9 @@ server:
 tomcat:
   ajp:
     port: 9094
+
+masterkey:
+    path: /opt/springservices/data/file.txt
    
 logging:
     level:
