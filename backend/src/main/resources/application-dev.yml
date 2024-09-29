@@ -1,9 +1,9 @@
 server:
-    port: 8084
+    port: 8080
     
 tomcat:
   ajp:
-    port: 9094
+    port: 9090
 
 masterkey:
     path: C:\Users\micha\Documents\dev\masterkey\devkey.txt
